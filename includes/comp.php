@@ -83,7 +83,7 @@
     <div class="competition-content">
       <h2>Join Our Book Competition!</h2>
       <p>Show your creativity and knowledge by participating in our exciting book competition. Register now and get a chance to win amazing prizes!</p>
-      <a href="register.html" class="btn">Register Now</a>
+      <a href="competition.php" class="btn">Register Now</a>
     </div>
   </section>
 
