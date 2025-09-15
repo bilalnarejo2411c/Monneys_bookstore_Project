@@ -266,7 +266,7 @@ session_start();
     <div class="logo">Mooney's</div>
     <span class="menu-toggle" onclick="toggleMenu()">☰</span>
     <ul class="nav-links">
-        <li><a href="#" class="active">Home</a></li>
+        <li><a href="orignal.php" class="active">Home</a></li>
 
         <!-- Books Dropdown -->
         <li>
