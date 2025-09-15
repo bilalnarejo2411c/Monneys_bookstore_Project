@@ -1,5 +1,4 @@
 <?php include("includes/navbar.php");?>
-<?php include("includes/Categorie.php");?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -163,8 +162,6 @@
   </style>
 </head>
 <body>
-  <hr>
-  <br>
   <h1 class="section-heading">📚 Growth Books</h1>
   <br>
   <hr>

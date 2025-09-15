@@ -10,7 +10,9 @@
       font-family: "Poppins", sans-serif;
      background: linear-gradient(135deg,  #541212,#154D71);
     }
-
+.active{
+      font-weight: 600;
+    }
     .container {
       display: flex;
       max-width: 950px;
@@ -166,27 +168,27 @@
     <!-- Right Side Form -->
     <div class="form-box">
       <h2>Contact Us</h2>
-      <form action="contactprocess.php" method="POST">
-        <label>Full Name</label>
+      <form action="data/contactprocess.php" method="POST">
+        <label class="active">Full Name</label>
         <input type="text" name="name" required>
 
-        <label>Email</label>
+        <label class="active">Email</label>
         <input type="email" name="email" required>
 
-        <label>Message</label>
+        <label class="active">Message</label>
         <textarea name="message" rows="5" required></textarea>
 
-        <button type="submit" name="submit">✨ Contact Us</button>
+        <button type="submit" name="submit" class="active">✨ Contact Us</button>
       </form>
 
       <div class="info">
-        <p><strong>Email:</strong> contact@bookhaven.com</p>
+        <p><strong>Email:</strong>Mooneysbooks@aptechgdn.net</p>
         <p><strong>Based in:</strong> Karachi, Pakistan</p>
       </div>
 
       <!-- Social Icons -->
       <div class="social">
-        <a href="#">📘</a>
+        <a href=""></a>
         <a href="#">🐦</a>
         <a href="#">📸</a>
       </div>

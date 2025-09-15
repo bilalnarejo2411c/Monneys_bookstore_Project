@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,17 +16,16 @@
 
   <style>
     * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  body {
-    font-family: "Poppins", sans-serif;
-    background-color;
-    line-height: 1.6;
-    color: #333;
-  }
+    body {
+      font-family: "Poppins", sans-serif;
+      line-height: 1.6;
+      color: #333;
+    }
 
     /* Navbar */
     nav {
@@ -39,19 +42,19 @@
       flex-wrap: wrap;
     }
 
-   .logo {
-  font-family: "Cormorant Garamond", serif;
-  font-size: 32px;
-  font-weight: 600;
-  letter-spacing: 2px;
-  background: linear-gradient(45deg, #d4af37, #f1c40f, #d4af37);
-  background-clip: text;               /* Standard property */
-  -webkit-background-clip: text;       /* Chrome / Safari */
-  -webkit-text-fill-color: transparent; /* Chrome / Safari */
-  color: transparent;                   /* Firefox ke liye */
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-  cursor: pointer;
-}
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      background: linear-gradient(45deg, #d4af37, #f1c40f, #d4af37);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+      cursor: pointer;
+    }
 
     .nav-links {
       list-style: none;
@@ -89,7 +92,6 @@
       width: 100%;
     }
 
-    /* Active link */
     .nav-links .active {
       font-weight: 600;
     }
@@ -127,6 +129,39 @@
       color: #ff9800;
     }
 
+    /* Dropdown */
+    .dropdown-menu {
+      position: absolute;
+      top: 40px;
+      left: 0;
+      background: #fff;
+      border-radius: 8px;
+      min-width: 180px;
+      box-shadow: 0px 6px 12px rgba(0,0,0,0.2);
+      display: none;
+      flex-direction: column;
+      padding: 10px 0;
+      z-index: 999;
+    }
+
+    .dropdown-menu a {
+      padding: 10px 20px;
+      display: block;
+      color: #333;
+      font-size: 15px;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .dropdown-menu a:hover {
+      background: #f1c40f;
+      color: #000;
+    }
+
+    .nav-links li:hover .dropdown-menu {
+      display: flex;
+    }
+
     /* Toggle Button */
     .menu-toggle {
       display: none;
@@ -158,6 +193,22 @@
         display: flex;
       }
 
+      .dropdown-menu {
+        position: static;
+        box-shadow: none;
+        background: transparent;
+      }
+
+      .dropdown-menu a {
+        color: #fff;
+        padding: 8px 0 8px 15px;
+      }
+
+      .dropdown-menu a:hover {
+        background: rgba(241, 196, 15, 0.2);
+        color: #f1c40f;
+      }
+
       .search-box {
         width: 100%;
         padding: 6px 10px;
@@ -171,8 +222,43 @@
         font-size: 20px;
       }
     }
+
+    /* dynamically name ka colour */
+
+    .username-link {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px; /* thoda space */
+}
+
+/* "Hi" ka style */
+.greeting {
+    color: #fff; 
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* Username ka style */
+.username {
+    color: #f1c40f; 
+    font-size: 18px; /* thoda bada */
+    font-weight: 700; /* thoda bold */
+    text-transform: capitalize; /* agar first letter capital ho */
+}
+
+/* Hover effect */
+.username-link:hover .username {
+    color: #fff; 
+}
+
+.username-link:hover .greeting {
+    color: #f1c40f;
+}
+
   </style>
 </head>
+
 <body>
 
   <!-- Navbar -->
@@ -180,26 +266,56 @@
     <div class="logo">Mooney's</div>
     <span class="menu-toggle" onclick="toggleMenu()">☰</span>
     <ul class="nav-links">
-      <li><a href="#" class="active">Home</a></li>
-      <li><a href="#"class="active">Competition</a></li>
-      <li><a href="#"class="active">SignIN/SignUP</a></li>
-      <li><a href="contact.php"class="active">Contact</a></li>
-            <li><a href="#"class="active">Cart🛒</a></li>
-      <!-- Search box -->
-      <li>
-        <div class="search-box">
-          <input type="text" placeholder="Search books, authors...">
-          <button>📚</button>
-        </div>
-      </li>
+        <li><a href="#" class="active">Home</a></li>
+
+        <!-- Books Dropdown -->
+        <li>
+            <a href="#" class="active">Books ▼</a>
+            <div class="dropdown-menu">
+                <a href="#" class="active">Fictional</a>
+                <a href="#" class="active">Non-Fiction</a>
+                <a href="GrowthSec.php" class="active">Growth</a>
+                <a href="#" class="active">Science</a>
+                <a href="#" class="active">Romance</a>
+            </div>
+        </li>
+
+        <li><a href="competition.php" class="active">Competition</a></li>
+        <li><a href="contact.php" class="active">ContactUs</a></li>
+        <li><a href="#" class="active">Cart🛒</a></li>
+
+        <!-- Dynamic Username -->
+      <!-- Dynamic Username -->
+<li class="active dynamic">
+    <?php
+        if(isset($_SESSION['username']) && !empty($_SESSION['username'])){
+            // username <a> ke andar
+           echo '<a href="#" class="username-link">
+                    <span class="greeting">Hi </span>
+                    <span class="username">' . htmlspecialchars($_SESSION['username']) . '</span>
+                  </a>';
+        } else {
+            echo "<a href='login.php' class='active'>Signin/Signup</a>";
+        }
+    ?>
+</li>
+
+        <!-- Search box -->
+        <li>
+            <div class="search-box">
+                <input type="text" placeholder="Search books, authors...">
+                <button>📚</button>
+            </div>
+        </li>
     </ul>
-  </nav>
-  <!-- Script -->
-  <script>
-    function toggleMenu() {
-      document.querySelector(".nav-links").classList.toggle("show");
-    }
-  </script>
-<hr>
+</nav>
+
+<script>
+function toggleMenu() {
+    document.querySelector(".nav-links").classList.toggle("show");
+}
+</script>
+
+  <hr>
 </body>
 </html>
