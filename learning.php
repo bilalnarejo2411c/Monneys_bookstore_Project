@@ -214,3 +214,4 @@ if ($res && $res->num_rows > 0) {
 ?>
 </body>
 </html>
+<?php include("includes/footer.php");?>
