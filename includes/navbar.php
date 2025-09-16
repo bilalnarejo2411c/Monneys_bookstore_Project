@@ -132,7 +132,7 @@ session_start();
     /* Dropdown */
     .dropdown-menu {
       position: absolute;
-      top: 40px;
+      top: 15px;
       left: 0;
       background: #fff;
       border-radius: 8px;
@@ -272,11 +272,11 @@ session_start();
         <li>
             <a href="#" class="active">Books ▼</a>
             <div class="dropdown-menu">
-                <a href="#" class="active">Fictional</a>
-                <a href="#" class="active">Non-Fiction</a>
-                <a href="GrowthSec.php" class="active">Growth</a>
-                <a href="#" class="active">Science</a>
-                <a href="#" class="active">Romance</a>
+                <a href="fictional.php" class="active">Fictional</a>
+                <a href="NonFictional.php" class="active">Non-Fiction</a>
+                <a href="learning.php" class="active">Learning</a>
+                <a href="Disciplane.php" class="active">Disciplane</a>
+                <a href="Romance.php" class="active">Romance</a>
             </div>
         </li>
 

@@ -11,26 +11,32 @@
 <section class="new-arrivals">
   <h2>✨ Trending Books ✨</h2>
   <div class="grid">
-    <?php
-    $connect = mysqli_connect("localhost", "root", "", "monneys_bookstore");
+<?php
+$connect = mysqli_connect("localhost", "root", "", "monneys_bookstore");
 
-    $query = "SELECT * FROM trending_arrivals ORDER BY id ASC"; 
-    $result = mysqli_query($connect, $query);
+// Sirf 3 books uthani hain
+$query = "SELECT book_id, title, author, description, price, image 
+          FROM books 
+          WHERE book_id IN (3,5,9) 
+          ORDER BY book_id ASC";
 
-    while($row = mysqli_fetch_assoc($result)){
-      echo "
-      <div class='book-card'>
-        <div class='image shimmer'>
-          <img src='images/".$row['image']."' alt='".$row['name']."'>
-        </div>
-        <h3>".$row['name']."</h3>
-        <p class='price'>".$row['price']."</p>
-        <p class='desc'>".$row['discription']."</p>
-       <a href='buy.php'><button class='btn'>Buy Now</button></a>
-      </div>
-      ";
-    }
-    ?>
+$result = mysqli_query($connect, $query);
+
+while($row = mysqli_fetch_assoc($result)){
+  echo "
+  <div class='book-card'>
+    <div class='image shimmer'>
+      <img src='".$row['image']."' alt='".$row['title']."'>
+    </div>
+    <h3>".$row['title']."</h3>
+    <p class='price'>".$row['price']." PKR</p>
+    <p class='desc'>".$row['description']."</p>
+    <a href='orderdetails.php?id=".$row['book_id']."'><button class='btn'>Buy Now</button></a>
+  </div>
+  ";
+}
+?>
+
   </div>
 </section>
 
