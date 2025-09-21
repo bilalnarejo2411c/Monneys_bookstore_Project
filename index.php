@@ -14,6 +14,8 @@
   <title>Mooney's Bookstore</title>
 
   <!-- Google Fonts -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
@@ -136,7 +138,7 @@
     /* Dropdown */
     .dropdown-menu {
       position: absolute;
-      top: 40px;
+      top: 15px;
       left: 0;
       background: #fff;
       border-radius: 8px;
@@ -252,7 +254,7 @@
       <li>
         <div class="search-box">
           <input type="text" placeholder="Search books, authors...">
-          <button>📚</button>
+          <button><i class="fa-solid fa-magnifying-glass"></i></button>
         </div>
       </li>
     </ul>

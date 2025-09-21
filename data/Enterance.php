@@ -68,7 +68,17 @@ if (isset($_POST['login'])) {
         exit;
     }
 
-    $stmt = $conn->prepare("SELECT username, password FROM users WHERE email=? LIMIT 1");
+    // ✅ Check if Admin login
+    if ($email === "admin@site.com" && $password === "admin123") {
+        $_SESSION['username'] = "admin";
+        $_SESSION['email']    = $email;
+        $_SESSION['role']     = "admin";
+        echo "<script>alert('Welcome Admin!'); window.location.href='../admin_orders.php';</script>";
+        exit;
+    }
+
+    // ✅ Normal User login
+    $stmt = $conn->prepare("SELECT username, password, role FROM users WHERE email=? LIMIT 1");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -79,7 +89,13 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $row['password'])) {
             $_SESSION['username'] = $row['username'];
             $_SESSION['email']    = $email;
-            echo "<script>alert('Login Successful!'); window.location.href='../orignal.php';</script>";
+            $_SESSION['role']     = $row['role'];
+            
+            if ($row['role'] === "admin") {
+                echo "<script>alert('Welcome Admin!'); window.location.href='../admin_orders.php';</script>";
+            } else {
+                echo "<script>alert('Login Successful!'); window.location.href='../orignal.php';</script>";
+            }
         } else {
             echo "<script>alert('Invalid Password!'); window.location.href='../index.php';</script>";
         }

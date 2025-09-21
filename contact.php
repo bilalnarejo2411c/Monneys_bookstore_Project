@@ -1,3 +1,4 @@
+<?php include('includes/navbar.php'); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -196,3 +197,4 @@
   </div>
 </body>
 </html>
+<?php include('includes/footer.php'); ?>

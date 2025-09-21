@@ -4,6 +4,9 @@ ini_set('display_errors', 1);
 
 include("includes/navbar.php");
 include("data/databases.php"); // $conn hona chahiye
+
+// assume user login hai (testing ke liye fixed, baad me login ke session se aayega)
+$_SESSION['user_id'] = 1;
 ?>
 
 <!DOCTYPE html>
@@ -164,13 +167,13 @@ include("data/databases.php"); // $conn hona chahiye
         width: 100%;
       }
     }
-      .actions a{
-       text-decoration: none;
+    .actions a, .actions form {
+      text-decoration: none;
     }
   </style>
 </head>
 <body>
-  <h1 class="section-heading">📚 Discipline Books</h1>
+  <h1 class="section-heading">Discipline Books</h1>
   <br>
   <hr>
 
@@ -184,7 +187,6 @@ $res = $conn->query($sql);
 
 if ($res && $res->num_rows > 0) {
     while ($row = $res->fetch_assoc()) {
-        // sanitize output
         $title = htmlspecialchars($row['title']);
         $author = htmlspecialchars($row['author']);
         $description = htmlspecialchars($row['description']);
@@ -203,10 +205,15 @@ if ($res && $res->num_rows > 0) {
                       <p class="book-price">$'.$price.'</p>
                       <p class="book-description">'.$description.'</p>
                     </div>
-                                  <div class="actions">
-  <a href="orderdetails.php?id='.$row['book_id'].'" class="btn btn-buy">Download Sample</a>
-  <a href="orderdetails.php?id='.$row['book_id'].'" class="btn btn-buy">🛒 Buy EBook</a>
-</div>
+                    <div class="actions">
+                      <a href="orderdetails.php?id='.$row['book_id'].'" class="btn btn-buy">Download Sample</a>
+
+                      <!-- Add to Cart Form -->
+                      <form method="POST" action="add_to_cart.php">
+                          <input type="hidden" name="book_id" value="'.$row['book_id'].'">
+                          <button type="submit" class="btn btn-buy">🛒 Add to Cart</button>
+                      </form>
+                    </div>
                   </div>
                 </div>
               </div>';

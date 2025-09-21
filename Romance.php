@@ -170,7 +170,7 @@ include("data/databases.php"); // $conn hona chahiye
   </style>
 </head>
 <body>
-  <h1 class="section-heading">📚 Romance Books</h1>
+  <h1 class="section-heading">Romance Books</h1>
   <br>
   <hr>
 

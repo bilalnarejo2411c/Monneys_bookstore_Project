@@ -282,7 +282,7 @@ session_start();
 
         <li><a href="competition.php" class="active">Competition</a></li>
         <li><a href="contact.php" class="active">ContactUs</a></li>
-        <li><a href="#" class="active">Cart🛒</a></li>
+        <li><a href="cart.php" class="active">Cart🛒</a></li>
 
         <!-- Dynamic Username -->
       <!-- Dynamic Username -->
@@ -304,7 +304,7 @@ session_start();
         <li>
             <div class="search-box">
                 <input type="text" placeholder="Search books, authors...">
-                <button>📚</button>
+                   <button><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
         </li>
     </ul>
