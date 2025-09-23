@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Sep 16, 2025 at 08:26 PM
+-- Generation Time: Sep 23, 2025 at 06:30 AM
 -- Server version: 9.1.0
 -- PHP Version: 8.3.14
 
@@ -97,7 +97,14 @@ CREATE TABLE IF NOT EXISTS `cart` (
   PRIMARY KEY (`cart_id`),
   KEY `user_id` (`user_id`),
   KEY `book_id` (`book_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`cart_id`, `user_id`, `book_id`, `quantity`, `added_at`) VALUES
+(13, 1, 33, 1, '2025-09-21 15:06:29');
 
 -- --------------------------------------------------------
 
@@ -239,17 +246,20 @@ CREATE TABLE IF NOT EXISTS `users` (
   `email` varchar(150) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `role` enum('user','admin') DEFAULT 'user',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`) VALUES
-(5, 'bilal', 'bilalnarejo2411c@aptechgdn.net', '$2y$10$rqkG54mFUQ0WaQXAieUyweBk5NyxP.91YM1/b/zoQTUXpnv50Dh7m', '2025-09-14 21:08:24'),
-(6, 'mariyam', 'mariyam123@gmail.com', '$2y$10$GuKb3hcOE5kh5JqhJv6X8eDVI0OtWEKrce8t11dGBt5l9CskOMpkG', '2025-09-15 09:50:39');
+INSERT INTO `users` (`id`, `username`, `email`, `password`, `created_at`, `role`) VALUES
+(5, 'bilal', 'bilalnarejo2411c@aptechgdn.net', '$2y$10$rqkG54mFUQ0WaQXAieUyweBk5NyxP.91YM1/b/zoQTUXpnv50Dh7m', '2025-09-14 21:08:24', 'user'),
+(6, 'mariyam', 'mariyam123@gmail.com', '$2y$10$GuKb3hcOE5kh5JqhJv6X8eDVI0OtWEKrce8t11dGBt5l9CskOMpkG', '2025-09-15 09:50:39', 'user'),
+(7, 'ayan', 'ayan123@gmail.com', '$2y$10$6aJqp2M070q.cg9EQa9EaewRBea5oWG95maU.jGjt.irLVJuplH4K', '2025-09-18 19:31:06', 'user'),
+(8, 'admin', 'admin@site.com', 'admin123', '2025-09-18 19:55:48', 'admin');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
