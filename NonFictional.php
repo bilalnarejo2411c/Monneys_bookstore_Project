@@ -204,7 +204,7 @@ if ($res && $res->num_rows > 0) {
                       <p class="book-description">'.$description.'</p>
                     </div>
 <div class="actions">
-  <a href="orderdetails.php?id='.$row['book_id'].'" class="btn btn-buy">Download Sample</a>
+
   <a href="orderdetails.php?id='.$row['book_id'].'" class="btn btn-buy">🛒 Buy EBook</a>
 </div>
 

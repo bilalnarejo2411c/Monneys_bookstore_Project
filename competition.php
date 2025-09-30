@@ -5,7 +5,6 @@ include('data/databases.php');
 $submitted = false;
 $successMsg = $errorMsg = '';
 
-// Handle form submission
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $username = htmlspecialchars($_POST['username']);
     $title = htmlspecialchars($_POST['title']);
@@ -94,6 +93,7 @@ footer { background:#333; color:#fff; text-align:center; padding:15px 0; }
         if($errorMsg) echo "<p style='color:red;text-align:center;'>$errorMsg</p>";
     ?>
 
+    <!-- ✅ Starting time display set to 3 hours -->
     <p class="timer" id="timer">03:00:00</p>
 
     <form id="competitionForm" method="POST" enctype="multipart/form-data">
@@ -127,7 +127,8 @@ footer { background:#333; color:#fff; text-align:center; padding:15px 0; }
 </div>
 
 <script>
-// Timer
+// ✅ Timer: 3 hours (10800 seconds)
+// ✅ Slow update: update every 2 seconds
 let timerElement = document.getElementById('timer');
 let submitBtn = document.getElementById('submitBtn');
 let totalSeconds = 10800; // 3 hours
@@ -137,15 +138,15 @@ let timer = setInterval(function() {
     let mins = Math.floor((totalSeconds % 3600) / 60);
     let secs = totalSeconds % 60;
     timerElement.textContent = `${hrs.toString().padStart(2,'0')}:${mins.toString().padStart(2,'0')}:${secs.toString().padStart(2,'0')}`;
-    totalSeconds--;
-
+    totalSeconds -= 2; // ↓ Har 2 sec me 2 sec minus karo (normal speed)
+    // Agar aap aur slow chahte hain to yahan 1 minus rakho
     if(totalSeconds < 0){
         clearInterval(timer);
         timerElement.textContent = "Time's Up!";
         submitBtn.disabled = true;
         document.getElementById('winnerModal').style.display = "block";
     }
-});
+}, 2000); // <- Update every 2 seconds
 
 // Modal Close
 document.getElementById('closeModal').onclick = function() {

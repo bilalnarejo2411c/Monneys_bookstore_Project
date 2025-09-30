@@ -301,13 +301,7 @@ session_start();
 </li>
 
         <!-- Search box -->
-        <li>
-            <div class="search-box">
-                <input type="text" placeholder="Search books, authors...">
-                   <button><i class="fa-solid fa-magnifying-glass"></i></button>
-            </div>
-        </li>
-    </ul>
+     
 </nav>
 
 <script>

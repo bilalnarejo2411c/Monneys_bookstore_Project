@@ -206,12 +206,12 @@ if ($res && $res->num_rows > 0) {
                       <p class="book-description">'.$description.'</p>
                     </div>
                     <div class="actions">
-                      <a href="orderdetails.php?id='.$row['book_id'].'" class="btn btn-buy">Download Sample</a>
+              
 
                       <!-- Add to Cart Form -->
                       <form method="POST" action="add_to_cart.php">
                           <input type="hidden" name="book_id" value="'.$row['book_id'].'">
-                          <button type="submit" class="btn btn-buy">🛒 Add to Cart</button>
+                          <button type="submit" class="btn btn-buy">🛒 Buy Ebook</button>
                       </form>
                     </div>
                   </div>

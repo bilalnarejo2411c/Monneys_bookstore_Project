@@ -179,7 +179,7 @@
         <label class="active">Message</label>
         <textarea name="message" rows="5" required></textarea>
 
-        <button type="submit" name="submit" class="active">✨ Contact Us</button>
+        <button type="submit" name="submit" class="active"> Contact Us</button>
       </form>
 
       <div class="info">
@@ -188,11 +188,7 @@
       </div>
 
       <!-- Social Icons -->
-      <div class="social">
-        <a href=""></a>
-        <a href="#">🐦</a>
-        <a href="#">📸</a>
-      </div>
+     
     </div>
   </div>
 </body>
